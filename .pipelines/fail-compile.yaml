@@ -1,0 +1,14 @@
+# Goal: pipeline fails during compilation.
+pipeline:
+  name: java-compile-failure
+  stages:
+    - name: prepare
+      jobs:
+        - name: enable-broken-source
+          steps:
+            - run: cp src/main/java/com/example/BrokenSource.java.template src/main/java/com/example/BrokenSource.java
+    - name: build
+      jobs:
+        - name: compile
+          steps:
+            - run: mvn -B clean compile

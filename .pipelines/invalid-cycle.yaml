@@ -1,0 +1,13 @@
+pipeline:
+  name: invalid-cycle
+  stages:
+    - name: demo
+      jobs:
+        - name: jobA
+          needs: [jobB]
+          steps:
+            - run: echo "A"
+        - name: jobB
+          needs: [jobA]
+          steps:
+            - run: echo "B"
