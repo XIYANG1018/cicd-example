@@ -12,5 +12,4 @@ compile:
 
 failing-tests:
   stage: test
-  needs: [compile]
   script: scripts/test-failing.sh
