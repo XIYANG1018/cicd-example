@@ -14,5 +14,4 @@ compile:
 run-tests:
   stage: test
   image: eclipse-temurin:17
-  needs: [compile]
   script: scripts/test.sh
