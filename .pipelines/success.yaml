@@ -9,9 +9,16 @@ stages:
 compile:
   stage: build
   image: eclipse-temurin:17
-  script: sh scripts/compile.sh
+  script:
+    - rm -rf out/main
+    - mkdir -p out/main
+    - find src/main/java -name '*.java' -print0 | xargs -0 javac -d out/main
 
 run-tests:
   stage: test
   image: eclipse-temurin:17
-  script: sh scripts/test.sh
+  script:
+    - rm -rf out/test
+    - mkdir -p out/test
+    - javac -cp out/main -d out/test src/test/java/com/example/CalculatorTest.java
+    - java -cp out/main:out/test com.example.CalculatorTest
