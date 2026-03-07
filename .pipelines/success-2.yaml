@@ -1,0 +1,12 @@
+pipeline:
+  name: MY-VERY-OBVIOUS-PIPELINE
+  description: test
+
+stages:
+  - build
+
+compile:
+  stage: build
+  image: eclipse-temurin:17
+  script:
+    - echo "HELLO-12345"
