@@ -1,6 +1,6 @@
 pipeline:
-  name: JAVA-TEST
-  description: compile demo
+  name: JAVA-DEBUG
+  description: debug java compile
 
 stages:
   - build
@@ -9,7 +9,10 @@ compile:
   stage: build
   image: eclipse-temurin:17
   script:
+    - set -x
+    - java -version
+    - javac -version
     - pwd
-    - find src/main/java -name '*.java'
+    - ls -R
     - mkdir -p out/main
-    - javac -d out/main src/main/java/com/example/App.java src/main/java/com/example/Calculator.java
+    - javac -d out/main $(find src/main/java -name '*.java')
