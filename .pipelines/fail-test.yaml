@@ -8,8 +8,10 @@ stages:
 
 compile:
   stage: build
+  image: eclipse-temurin:17
   script: scripts/compile.sh
 
 failing-tests:
   stage: test
+  image: eclipse-temurin:17
   script: scripts/test-failing.sh
